@@ -35,7 +35,7 @@ def main():
     print(f"Humidity: {weather['humidity']}%")
     print(f"Description: {weather['description']}")
 
-    if args.listen:
+    if args.listen=="Yes":
         audio_stream = weather_app.speak_weather(args.city, weather)
         if audio_stream:
             audio_file = "weather_forecast.wav"
