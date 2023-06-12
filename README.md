@@ -23,3 +23,6 @@ pip install -r requirements.txt
 ```bash
 python weather.py --city <city_name> --api-key <your openweathermap api key>
 ``` 
+
+## Tech Stack
+Microsoft Azure, OpenWeatherMap API, Python, Tkinter, PyAudio, SpeechRecognition, Requests, JSON, Pandas, Matplotlib, Numpy, Datetime, Time, OS, Math, Random, Pyttsx3, Pyinstaller
