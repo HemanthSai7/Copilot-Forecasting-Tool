@@ -1,15 +1,23 @@
 # Import the necessary modules
+import os
 import requests
+from dotenv import load_dotenv
+load_dotenv()
+
 import azure.cognitiveservices.speech as speechsdk
+from azure.core.credentials import AzureKeyCredential
+from azure.ai.textanalytics import TextAnalyticsClient
+
 
 # Define a Weather class
 class Weather:
     # Define the __init__ method, which is called when a new instance of the class is created
-    def __init__(self, city, api_key, azure_sub_key):
+    def __init__(self, city, api_key, azure_sub_key,azure_lang_key):
         # Store the city, API key, and Azure subscription key as instance variables
         self.city = city
         self.api_key = api_key
         self.azure_sub_key = azure_sub_key
+        self.azure_lang_key=azure_lang_key
 
     # Define a method to get the weather for the specified city
     def get_weather(self):
@@ -46,3 +54,23 @@ class Weather:
         # Otherwise, return None
         else:
             return None
+        
+
+    def entity_recognition(self,text):
+        endpoint = os.environ["AZURE_LANGUAGE_ENDPOINT"]
+
+        text_analytics_client = TextAnalyticsClient(endpoint=endpoint, credential=AzureKeyCredential(self.azure_lang_key))
+
+        reviews = [f"""{text}"""]
+        result = text_analytics_client.recognize_entities(reviews)
+        result = [review for review in result if not review.is_error]
+
+        location=None
+        category=None
+        for review in result:
+            for entity in review.entities:
+                location=entity.text
+                category=entity.category
+                break
+
+        return location,category    

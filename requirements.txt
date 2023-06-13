@@ -1,2 +1,3 @@
 python-dotenv
 azure-cognitiveservices-speech
+azure-ai-textanalytics --pre
