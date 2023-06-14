@@ -56,21 +56,31 @@ class Weather:
             return None
         
 
-    def entity_recognition(self,text):
-        endpoint = os.environ["AZURE_LANGUAGE_ENDPOINT"]
+    def entity_recognition(self, text):
+    # Get the Azure Language endpoint from the environment variables
+    endpoint = os.environ["AZURE_LANGUAGE_ENDPOINT"]
 
-        text_analytics_client = TextAnalyticsClient(endpoint=endpoint, credential=AzureKeyCredential(self.azure_lang_key))
+    # Create a TextAnalyticsClient object with the endpoint and Azure subscription key
+    text_analytics_client = TextAnalyticsClient(endpoint=endpoint, credential=AzureKeyCredential(self.azure_lang_key))
 
-        reviews = [f"""{text}"""]
-        result = text_analytics_client.recognize_entities(reviews)
-        result = [review for review in result if not review.is_error]
+    # Create a list of reviews containing the specified text
+    reviews = [f"""{text}"""]
+    # Use the TextAnalyticsClient object to recognize entities in the reviews
+    result = text_analytics_client.recognize_entities(reviews)
+    # Filter out any errors in the result
+    result = [review for review in result if not review.is_error]
 
-        location=None
-        category=None
-        for review in result:
-            for entity in review.entities:
-                location=entity.text
-                category=entity.category
-                break
+    # Initialize variables for the location and category of the recognized entity
+    location = None
+    category = None
+    # Loop through the result to find the first recognized entity
+    for review in result:
+        for entity in review.entities:
+            # Set the location and category variables to the text and category of the entity
+            location = entity.text
+            category = entity.category
+            # Break out of the loop after finding the first entity
+            break
 
-        return location,category    
+    # Return the location and category of the recognized entity
+    return location, category
