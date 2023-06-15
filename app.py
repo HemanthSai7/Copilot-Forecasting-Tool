@@ -4,6 +4,7 @@ import requests
 from dotenv import load_dotenv
 load_dotenv()
 
+# importing the required modules, Azure Speech SDK, Azure Text Analytics SDK and Azure Core Credentials
 import azure.cognitiveservices.speech as speechsdk
 from azure.core.credentials import AzureKeyCredential
 from azure.ai.textanalytics import TextAnalyticsClient
