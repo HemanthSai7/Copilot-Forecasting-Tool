@@ -1,4 +1,3 @@
-# Import the necessary modules
 import os
 import requests
 from dotenv import load_dotenv
@@ -13,12 +12,12 @@ from azure.ai.textanalytics import TextAnalyticsClient
 # Define a Weather class
 class Weather:
     # Define the __init__ method, which is called when a new instance of the class is created
-    def __init__(self, city, api_key, azure_sub_key,azure_lang_key):
+    def __init__(self, city, api_key, azure_sub_key, azure_lang_key):
         # Store the city, API key, and Azure subscription key as instance variables
         self.city = city
         self.api_key = api_key
         self.azure_sub_key = azure_sub_key
-        self.azure_lang_key=azure_lang_key
+        self.azure_lang_key = azure_lang_key
 
     # Define a method to get the weather for the specified city
     def get_weather(self):
@@ -58,30 +57,30 @@ class Weather:
         
 
     def entity_recognition(self, text):
-    # Get the Azure Language endpoint from the environment variables
-    endpoint = os.environ["AZURE_LANGUAGE_ENDPOINT"]
+        # Get the Azure Language endpoint from the environment variables
+        endpoint = os.environ["AZURE_LANGUAGE_ENDPOINT"]
 
-    # Create a TextAnalyticsClient object with the endpoint and Azure subscription key
-    text_analytics_client = TextAnalyticsClient(endpoint=endpoint, credential=AzureKeyCredential(self.azure_lang_key))
+        # Create a TextAnalyticsClient object with the endpoint and Azure subscription key
+        text_analytics_client = TextAnalyticsClient(endpoint=endpoint, credential=AzureKeyCredential(self.azure_lang_key))
 
-    # Create a list of reviews containing the specified text
-    reviews = [f"""{text}"""]
-    # Use the TextAnalyticsClient object to recognize entities in the reviews
-    result = text_analytics_client.recognize_entities(reviews)
-    # Filter out any errors in the result
-    result = [review for review in result if not review.is_error]
+        # Create a list of reviews containing the specified text
+        reviews = [f"""{text}"""]
+        # Use the TextAnalyticsClient object to recognize entities in the reviews
+        result = text_analytics_client.recognize_entities(reviews)
+        # Filter out any errors in the result
+        result = [review for review in result if not review.is_error]
 
-    # Initialize variables for the location and category of the recognized entity
-    location = None
-    category = None
-    # Loop through the result to find the first recognized entity
-    for review in result:
-        for entity in review.entities:
-            # Set the location and category variables to the text and category of the entity
-            location = entity.text
-            category = entity.category
-            # Break out of the loop after finding the first entity
-            break
+        # Initialize variables for the location and category of the recognized entity
+        location = None
+        category = None
+        # Loop through the result to find the first recognized entity
+        for review in result:
+            for entity in review.entities:
+                # Set the location and category variables to the text and category of the entity
+                location = entity.text
+                category = entity.category
+                # Break out of the loop after finding the first entity
+                break
 
-    # Return the location and category of the recognized entity
-    return location, category
+        # Return the location and category of the recognized entity
+        return location, category
