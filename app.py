@@ -49,7 +49,7 @@ class Weather:
         
         # If the speech synthesis is successful, return the audio stream
         if result.reason == speechsdk.ResultReason.SynthesizingAudioCompleted:
-            audio_stream = result.audio_data_stream
+            audio_stream = result.audio_data
             return audio_stream
         # Otherwise, return None
         else:

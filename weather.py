@@ -3,6 +3,7 @@ import os
 import argparse
 from app import Weather
 from dotenv import load_dotenv
+import scipy.io.wavfile
 
 # Load environment variables from .env file
 load_dotenv()
@@ -56,7 +57,7 @@ def main():
         if audio_stream:
             audio_file = "weather_forecast.wav"
             with open(audio_file, "wb") as file:
-                file.write(audio_stream.get_wav_data())
+                scipy.io.wavfile.writeframes(audio_data, file)
     
             print("Weather forecast audio generated and saved as weather_forecast.wav.")
         else:
