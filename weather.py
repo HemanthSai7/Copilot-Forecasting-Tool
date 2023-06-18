@@ -57,7 +57,7 @@ def main():
         if audio_stream:
             audio_file = "weather_forecast.wav"
             with open(audio_file, "wb") as file:
-                scipy.io.wavfile.writeframes(audio_data, file)
+                scipy.io.wavfile.write(file, audio_stream)
     
             print("Weather forecast audio generated and saved as weather_forecast.wav.")
         else:
