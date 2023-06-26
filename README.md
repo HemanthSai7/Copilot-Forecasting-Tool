@@ -44,6 +44,11 @@ python weather.py --city <city_name> --api-key <your openweathermap api key> --a
 ---
 **Microsoft Azure, OpenWeatherMap API, Python, SpeechRecognition, Requests, Time, OS, Math, Random, Pyinstaller**
 
+## How to get your Open API Keys for Microsoft Azure and OpenWeatherMap
+---
+- [OpenWeatherMap API](https://openweathermap.org/api)
+- [Azure](https://azure.microsoft.com/en-us/)
+
 
 ## Team Members
 ---
