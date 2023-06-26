@@ -18,11 +18,11 @@ $ pip install -r requirements.txt
 --api-key <your openweathermap api key> # Openweathermap api key
 --azure_sub_key <your azure subscription key> # Azure subscription key
 --azure_lang_key <your azure language key> # Azure language key
---listen <Yes/No> # Listen for voice input
+--listen <Yes/No> # Listen for voice output
 --prompt <Your text prompt> # Natural language prompt
 ```
 > -  Please note that the `--listen` and `--prompt` arguments are optional. 
-> - If you want to use the voice input feature, you need to provide the `--listen` argument with a value of `Yes`.
+> - If you want to use the voice output feature, you need to provide the `--listen` argument with a value of `Yes`.
 > - If you want to use the `--prompt` argument with a natural language prompt. 
 > - For both `--listen` and `--prompt` features, you need to provide the `--azure_sub_key` and `--azure_lang_key` arguments with your azure subscription key and azure language key respectively else it will use the default values.
 > - Type `python weather.py --help` for more information.
@@ -46,6 +46,11 @@ python weather.py --city <city_name> --api-key <your openweathermap api key> --a
 ## How to get your Open API Keys for Microsoft Azure and OpenWeatherMap
 - [OpenWeatherMap API](https://openweathermap.org/api)
 - [Microsoft Azure](https://azure.microsoft.com/en-us/)
+
+## Demo and Screenshots
+![Screenshot1](./Assets/weather.png)
+![Screenshot2](./Assets/prompt.png)
+![listen](./Assets/listen.png)
 
 
 ## Team Members
