@@ -50,6 +50,16 @@ def main():
     # Get the weather data for the specified city
     weather = weather_app.get_weather()
 
+    if args.city:
+        print(f"Weather in {args.city}:")
+        print(f"Country: {weather['country']}")
+        print(f"Temperature: {weather['temperature']}°C")
+        print(f"Humidity: {weather['humidity']}%")
+        print(f"Description: {weather['description']}")
+        print(f"Wind Speed: {weather['wind_speed']} km/h")
+        print(f"Time Zone: {weather['datetime']} GMT")
+        print(f"Temperature feels like: {weather['feels_like']}°C")
+
     # Check if the voice output flag is set to "Yes"
     if args.listen == "Yes":
         # Generate the weather forecast audio and save it to a file
@@ -73,7 +83,7 @@ def main():
             print(f"Time Zone: {weather['datetime']} GMT")
             print(f"Temperature feels like: {weather['feels_like']}°C")
 
-    else:
+    elif args.listen == "No":
         # Print the weather data to the console
         print(f"Weather in {args.city}:")
         print(f"Country: {weather['country']}")
