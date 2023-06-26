@@ -1,4 +1,5 @@
 import os
+import datetime
 import requests
 from dotenv import load_dotenv
 load_dotenv()
@@ -27,10 +28,15 @@ class Weather:
         response = requests.get(url)
         # Parse the response as JSON and extract the relevant weather data
         data = response.json()
+
         weather = {
             'temperature': data['main']['temp'],
+            'country': data['sys']['country'],
+            'feels_like': data['main']['feels_like'],
             'humidity': data['main']['humidity'],
-            'description': data['weather'][0]['description']
+            'description': data['weather'][0]['description'],
+            'wind_speed': data['wind']['speed'],
+            'datetime': datetime.datetime.utcfromtimestamp(data['dt']),
         }
         # Return the weather data as a dictionary
         return weather
@@ -43,7 +49,7 @@ class Weather:
         synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config)
         
         # Construct a string with the weather information
-        text = f"The current weather in {city} is {weather['description']}. The temperature is {weather['temperature']} degrees Celsius, with a humidity of {weather['humidity']} percent."
+        text = f"The current weather in {city} is {weather['description']}. The temperature is {weather['temperature']} degrees Celsius, with a humidity of {weather['humidity']} percent. The wind speed is {weather['wind_speed']} kilometers per hour. The temperature feels like {weather['feels_like']} degrees Celsius. The Datetime is {weather['datetime']} GMT."
         # Call the SpeechSynthesizer's speak_text_async method with the weather string
         result = synthesizer.speak_text_async(text).get()
         

@@ -57,7 +57,7 @@ def main():
         if audio_stream:
             audio_file = "weather_forecast.wav"
             with open(audio_file, "wb") as file:
-                scipy.io.wavfile.write(file, audio_stream)
+                scipy.io.wavfile.write(file, rate=44100, data=audio_stream)
     
             print("Weather forecast audio generated and saved as weather_forecast.wav.")
         else:
@@ -65,16 +65,25 @@ def main():
 
             # Print the weather data to the console
             print(f"Weather in {args.city}:")
+            print(f"Country: {weather['country']}")
             print(f"Temperature: {weather['temperature']}°C")
             print(f"Humidity: {weather['humidity']}%")
             print(f"Description: {weather['description']}")
+            print(f"Wind Speed: {weather['wind_speed']} km/h")
+            print(f"Time Zone: {weather['datetime']} GMT")
+            print(f"Temperature feels like: {weather['feels_like']}°C")
 
-    elif args.listen == "No":
+    else:
         # Print the weather data to the console
         print(f"Weather in {args.city}:")
+        print(f"Country: {weather['country']}")
         print(f"Temperature: {weather['temperature']}°C")
         print(f"Humidity: {weather['humidity']}%")
         print(f"Description: {weather['description']}")
+        print(f"Wind Speed: {weather['wind_speed']} km/h")
+        print(f"Time Zone: {weather['datetime']} GMT")
+        print(f"Temperature feels like: {weather['feels_like']}°C")
+
 
 
     if args.prompt:
@@ -84,9 +93,14 @@ def main():
         if category=="Location":
             # Print the weather data to the console
             print(f"Weather in {location}:")
+            print(f"Country: {weather['country']}")
             print(f"Temperature: {weather['temperature']}°C")
             print(f"Humidity: {weather['humidity']}%")
             print(f"Description: {weather['description']}")
+            print(f"Wind Speed: {weather['wind_speed']} km/h")
+            print(f"Time Zone: {weather['datetime']} GMT")
+            print(f"Temperature feels like: {weather['feels_like']}°C")
+
 
         else:
             print("Please provide a valid prompt")
