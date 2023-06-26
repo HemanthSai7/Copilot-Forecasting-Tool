@@ -2,7 +2,6 @@
 Project Submission for Copilot hackathon
 
 ## Installation
----
 > Download zip or Clone the repository and run the following command in the terminal to install the required packages.
 
 ```bash
@@ -12,7 +11,6 @@ $ pip install -r requirements.txt
 ```
 
 ## Arguments
----
 
 ```bash
 --city <city_name> # City name
@@ -29,29 +27,24 @@ $ pip install -r requirements.txt
 > - Type `python weather.py --help` for more information.
 
 ## Usage
----
-> - In the terminal 
+> In the terminal run the following command to get the weather forecast for the city of your choice.
 
 ```bash
 python weather.py --city <city_name> --api-key <your openweathermap api key> --azure_sub_key <your azure subscription key> --azure_lang_key <your azure language key> --listen <Yes/No> --prompt <Your text prompt>
 ``` 
 
 ## Usage of Github Copilot in the project
----
 - 
 
 ## Tech Stack
----
 **Microsoft Azure, OpenWeatherMap API, Python, SpeechRecognition, Requests, Time, OS, Math, Random, Pyinstaller**
 
 ## How to get your Open API Keys for Microsoft Azure and OpenWeatherMap
----
 - [OpenWeatherMap API](https://openweathermap.org/api)
 - [Azure](https://azure.microsoft.com/en-us/)
 
 
 ## Team Members
----
 | Name | Github |
 | --- | --- |
 | Vishesh Tripathi | [Vishesh Tripathi](https://github.com/Vishesht27) |
